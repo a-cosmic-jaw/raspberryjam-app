@@ -31,6 +31,7 @@ open class GetController {
             logger.info("${it.key}=${it.value}")
         }
 
+        body += eu.symmetrysought.raspberryjam.kts.simpleLoader.main("7 + 11")
         body += "</body></html>"
 
         return HttpResponse.ok(body).contentType(MediaType.TEXT_HTML)

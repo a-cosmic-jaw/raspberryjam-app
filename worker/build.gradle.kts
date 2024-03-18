@@ -12,11 +12,11 @@ version = "0.1"
 group = "eu.symmetrysought.raspberryjam"
 
 val kotlinVersion: String by project.properties
+val kotlinCoroutinesVersion: String by project
 
 repositories {
     mavenCentral()
     google()
-
 }
 
 dependencies {
@@ -40,6 +40,18 @@ dependencies {
     //implementation(kotlin("script-runtime"))
 
     testImplementation("io.micronaut:micronaut-http-client")
+
+
+    implementation("org.jetbrains.kotlin:kotlin-scripting-common:$kotlinVersion")
+    implementation("org.jetbrains.kotlin:kotlin-scripting-jvm:$kotlinVersion")
+    implementation("org.jetbrains.kotlin:kotlin-scripting-jvm-host:$kotlinVersion")
+    implementation("org.jetbrains.kotlin:kotlin-scripting-dependencies:$kotlinVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion")
+    implementation("org.apache.ivy:ivy:2.5.0")
+
+    runtimeOnly("org.jetbrains.kotlin:kotlin-scripting-jsr223:$kotlinVersion")
+    testRuntimeOnly("org.jetbrains.kotlin:kotlin-scripting-jsr223:$kotlinVersion")
+    testImplementation("junit:junit:4.12")
 }
 
 
