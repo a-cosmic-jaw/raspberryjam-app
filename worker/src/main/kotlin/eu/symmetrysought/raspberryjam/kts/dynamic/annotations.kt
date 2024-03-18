@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package eu.symmetrysought.raspberryjam.kts.simpleMainKts
+package eu.symmetrysought.raspberryjam.kts.dynamic
 
 /**
  * Import other script(s)

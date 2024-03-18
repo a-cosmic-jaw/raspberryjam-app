@@ -32,6 +32,14 @@ open class GetController {
         }
 
         body += eu.symmetrysought.raspberryjam.kts.simpleLoader.main("7 + 11")
+
+        try {
+            val res = eu.symmetrysought.raspberryjam.kts.fromFile.main("/Users/VIP/dev/github.com/a-cosmic-jaw/raspberryjam-app/worker/src/main/kotlin/scripts/test.simplescript.kts")
+            body += "<br />" + res.configuration
+        }
+        catch (e: Exception) {
+            logger.warn(e.message)
+        }
         body += "</body></html>"
 
         return HttpResponse.ok(body).contentType(MediaType.TEXT_HTML)

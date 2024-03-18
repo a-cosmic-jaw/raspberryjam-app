@@ -3,10 +3,10 @@
  * Use of this source code is governed by the Apache 2.0 license that can be found in the license/LICENSE.txt file.
  */
 
-package eu.symmetrysought.raspberryjam.kts.simpleMainKts
+package eu.symmetrysought.raspberryjam.kts.dynamic
 
 import kotlinx.coroutines.runBlocking
-import eu.symmetrysought.raspberryjam.kts.simpleMainKts.impl.IvyResolver
+import eu.symmetrysought.raspberryjam.kts.dynamic.impl.IvyResolver
 import org.jetbrains.kotlin.script.examples.simpleMainKts.impl.resolveFromAnnotations
 import java.io.File
 import java.net.JarURLConnection

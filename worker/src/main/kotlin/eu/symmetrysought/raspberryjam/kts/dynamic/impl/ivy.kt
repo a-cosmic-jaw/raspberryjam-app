@@ -3,7 +3,7 @@
  * Use of this source code is governed by the Apache 2.0 license that can be found in the license/LICENSE.txt file.
  */
 
-package eu.symmetrysought.raspberryjam.kts.simpleMainKts.impl
+package eu.symmetrysought.raspberryjam.kts.dynamic.impl
 
 import org.apache.ivy.Ivy
 import org.apache.ivy.core.LogOptions
