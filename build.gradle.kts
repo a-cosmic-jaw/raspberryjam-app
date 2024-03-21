@@ -9,10 +9,12 @@
 //}
 
 plugins {
+    //id("kotlin") apply false
+    //id("org.jetbrains.kotlin") apply false
     id("org.jetbrains.kotlin.multiplatform") apply false
+    id("org.jetbrains.kotlin.jvm") apply false
     id("com.github.johnrengelman.shadow") apply false
     id("org.jetbrains.kotlin.plugin.serialization") apply false
-    id("org.graalvm.buildtools.native") apply false
     //id("application") apply false
 }
 
