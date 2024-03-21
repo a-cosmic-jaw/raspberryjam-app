@@ -1,7 +1,7 @@
 plugins {
-    //id("kotlin")
+    id("kotlin")
     //id("org.jetbrains.kotlin")
-    id("org.jetbrains.kotlin.multiplatform")
+    //id("org.jetbrains.kotlin.multiplatform")
     id("org.jetbrains.kotlin.plugin.serialization")
     id("application")
     id("com.github.johnrengelman.shadow")
@@ -13,11 +13,12 @@ val cliktVersion: String by project
 
 kotlin {
     jvm()
+    macosArm64()
 
     sourceSets {
         val commonMain by getting {
             dependencies {
-                runtimeOnly("com.github.ajalt.clikt:clikt:$cliktVersion")
+                implementation("com.github.ajalt.clikt:clikt:$cliktVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
                 //implementation("io.ktor:ktor-client-core:2.3.9")
                 //implementation("io.ktor:ktor-client-content-negotiation:2.3.9")
@@ -31,14 +32,19 @@ kotlin {
              //   testRuntimeOnly("org.junit.platform:junit-platform-launcher")
             }
         }
-        val jvmMain by getting {
+//        val jvmMain by getting {
+//            dependencies {
+//                //runtimeOnly("com.github.ajalt.clikt:clikt-jvm:$cliktVersion")
+//            }
+//        }
+        val macosArm64Main by getting {
             dependencies {
-                implementation("com.github.ajalt.clikt:clikt-jvm:$cliktVersion")
+                implementation("com.github.ajalt.clikt:clikt-macosarm64:$cliktVersion")
+
             }
         }
     }
 }
-
 
 application {
     mainClass.set("app.raspberryjam.cli.MainKt")
