@@ -31,7 +31,7 @@ open class GetController {
             logger.info("${it.key}=${it.value}")
         }
 
-        body += eu.symmetrysought.raspberryjam.kts.simpleLoader.main("7 + 11")
+        body += eu.symmetrysought.raspberryjam.kts.dynamic.loader.evaluate("7 + 11")
 
         try {
             val res = eu.symmetrysought.raspberryjam.kts.fromFile.main("/Users/VIP/dev/github.com/a-cosmic-jaw/raspberryjam-app/worker/src/main/kotlin/scripts/test.simplescript.kts")
@@ -40,6 +40,15 @@ open class GetController {
         catch (e: Exception) {
             logger.warn(e.message)
         }
+
+        try {
+            val res = eu.symmetrysought.raspberryjam.kts.dynamic.loader.fromFile("/Users/VIP/dev/github.com/a-cosmic-jaw/raspberryjam-app/worker/src/main/kotlin/scripts/test.simplescript.kts")
+            body += "<br />Dynamic from file: $res"
+        }
+        catch (e: Exception) {
+            logger.warn(e.message)
+        }
+
         body += "</body></html>"
 
         return HttpResponse.ok(body).contentType(MediaType.TEXT_HTML)

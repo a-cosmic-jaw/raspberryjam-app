@@ -1,0 +1,24 @@
+{
+  "version": "<version from https://github.com/a-cosmic-jar/raspberryjam-app/releases/ (do not use 'latest'!)",
+  "services": [
+    {
+      "name": "api",
+      "environment": {
+        "variables": {
+          "name": "RASPBERRYJAM_SECRET_0001",
+          "value": "<empty or encrypted, read more over at https://raspberryjam.app/introduction#environmentVariables>"
+        }
+      }
+    },
+    {
+      "name": "renderer",
+      "environment": {
+        "variables": {
+          "name": "RASPBERRYJAM_SECRET_0001",
+          "value": "<empty or encrypted>",
+          "branchSpecific": "<true or false>"
+        }
+      }
+    }
+  ]
+}
