@@ -1,50 +1,75 @@
 plugins {
-    id("kotlin")
+    //id("kotlin")
     //id("org.jetbrains.kotlin")
-    //id("org.jetbrains.kotlin.multiplatform")
+    id("org.jetbrains.kotlin.multiplatform")
     id("org.jetbrains.kotlin.plugin.serialization")
     id("application")
     id("com.github.johnrengelman.shadow")
 }
 
+val kotlinVersion: String by project
 val ktorVersion: String by project
 val kotlinCoroutinesVersion: String by project
 val cliktVersion: String by project
 
 kotlin {
-    jvm()
-    macosArm64()
-
-    sourceSets {
-        val commonMain by getting {
-            dependencies {
-                implementation("com.github.ajalt.clikt:clikt:$cliktVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
-                //implementation("io.ktor:ktor-client-core:2.3.9")
-                //implementation("io.ktor:ktor-client-content-negotiation:2.3.9")
-                //implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.9")
-                implementation("com.github.ajalt.mordant:mordant:2.2.0")
-
-                //runtimeOnly("com.github.ajalt.clikt:clikt-jvm:$cliktVersion")
-                // https://mvnrepository.com/artifact/com.github.ajalt.clikt/clikt-metadata
-                //implementation("com.github.ajalt.clikt:clikt-metadata:3.1.0")
-             //   testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
-             //   testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-            }
-        }
-//        val jvmMain by getting {
-//            dependencies {
-//                //runtimeOnly("com.github.ajalt.clikt:clikt-jvm:$cliktVersion")
-//            }
-//        }
-        val macosArm64Main by getting {
-            dependencies {
-                implementation("com.github.ajalt.clikt:clikt-macosarm64:$cliktVersion")
+//    jvm() {
+//        withJava()
+//    }
+    macosArm64 {
+        binaries {
+            executable {
 
             }
         }
     }
+
+    sourceSets {
+        val macosArm64Main by getting {
+
+        }
+//        val jvmMain by getting {
+//            dependencies {
+//                implementation("com.github.ajalt.clikt:clikt:$cliktVersion")
+//                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
+//                //implementation("io.ktor:ktor-client-core:2.3.9")
+//                //implementation("io.ktor:ktor-client-content-negotiation:2.3.9")
+//                //implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.9")
+//                implementation("com.github.ajalt.mordant:mordant:2.2.0")
+//                implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
+//                implementation("com.github.ajalt.clikt:clikt-jvm:$cliktVersion")
+//                // https://mvnrepository.com/artifact/com.github.ajalt.clikt/clikt-metadata
+//                //implementation("com.github.ajalt.clikt:clikt-metadata:3.1.0")
+//             //   testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
+//             //   testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+//            }
+//        }
+//        val macosArm64Main by getting {
+//            dependencies {
+//                //implementation("com.github.ajalt.clikt:clikt-macosarm64:$cliktVersion")
+//
+//            }
+//        }
+    }
 }
+
+//tasks.withType<Jar> {
+//    // Otherwise you'll get a "No main manifest attribute" error
+//    manifest {
+//        attributes["Main-Class"] = "app.raspberryjam.cli.MainKt"
+//    }
+//
+//    // To avoid the duplicate handling strategy error
+//    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+//
+//    // To add all of the dependencies
+//    from(sourceSets.main.get().output)
+//
+//    dependsOn(configurations.runtimeClasspath)
+//    from({
+//        configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
+//    })
+//}
 
 application {
     mainClass.set("app.raspberryjam.cli.MainKt")
