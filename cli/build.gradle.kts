@@ -15,6 +15,7 @@ kotlin {
     jvm() {
         withJava()
     }
+
     macosArm64 {
         binaries {
             executable {
@@ -24,10 +25,15 @@ kotlin {
     }
 
     sourceSets {
-        getByName("macosArm64Main").dependencies {
-            implementation("com.github.ajalt.clikt:clikt-macosarm64:$cliktVersion")
-            implementation("com.github.ajalt.clikt:clikt:$cliktVersion")
-            implementation("com.github.ajalt.mordant:mordant:$mordantVersion")
+        getByName("commonMain").dependencies {
+            implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+            implementation("io.ktor:ktor-client-core:$ktorVersion")
+            implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+            implementation("org.jetbrains.kotlin:kotlin-stdlib-common:$kotlinVersion")
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion")
+        }
+
+        getByName("jvmMain").dependencies {
             implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
             implementation("io.ktor:ktor-client-core:$ktorVersion")
             implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
@@ -35,8 +41,7 @@ kotlin {
             implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion")
         }
 
-        getByName("jvmMain").dependencies {
-            implementation("com.github.ajalt.clikt:clikt:$cliktVersion")
+        getByName("macosArm64Main").dependencies {
             implementation("com.github.ajalt.mordant:mordant:$mordantVersion")
             implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
             implementation("io.ktor:ktor-client-core:$ktorVersion")
