@@ -1,4 +1,4 @@
-package app.raspberryjam.cli
+package app.raspberryjam.cli.jvm
 
 import app.raspberryjam.cli.common.Platform
 

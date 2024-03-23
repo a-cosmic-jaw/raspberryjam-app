@@ -67,7 +67,7 @@ application {
 tasks.withType<Jar> {
     // Otherwise you'll get a "No main manifest attribute" error
     manifest {
-        attributes["Main-Class"] = "app.raspberryjam.cli.JvmMainKt"
+        attributes["Main-Class"] = "app.raspberryjam.cli.jvm.MainKt"
     }
 
     // To avoid the duplicate handling strategy error
