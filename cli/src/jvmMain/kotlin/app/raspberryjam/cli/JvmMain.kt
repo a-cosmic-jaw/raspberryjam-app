@@ -1,5 +1,7 @@
 package app.raspberryjam.cli
 
-fun main(args: Array<String>) {
+import app.raspberryjam.cli.common.Platform
 
+fun main(args: Array<String>) {
+    println("Greetings from ${Platform().getName()}")
 }
