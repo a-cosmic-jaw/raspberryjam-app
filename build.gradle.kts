@@ -15,8 +15,10 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization") apply false
 }
 
+val projectVersion: String by properties
+
 allprojects {
-    version = "0.0.1"
+    version = projectVersion
     group = "app.raspberryjam"
 
     repositories {

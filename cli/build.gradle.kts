@@ -9,6 +9,7 @@ val kotlinCoroutinesVersion: String by properties
 val kotlinVersion: String by properties
 val ktorVersion: String by properties
 val javaVersion = Integer.parseInt(findProperty("javaVersion") as String)
+val projectVersion: String by properties
 
 kotlin {
     jvm() {
@@ -98,5 +99,22 @@ java {
 tasks.filter { it.name == "clean" }.map {
     it.doFirst {
         delete("${project.projectDir}/output")
+    }
+}
+
+//val graalvmNativeImageTask = task<Exec>("graalvmNativeImage") {
+//    workingDir = File("${project.projectDir}/output/jvm")
+//    commandLine = listOf("native-image", "--no-fallback", "-jar", "cli-jvm*jar")
+//}
+
+//project(":cli").tasks.register(graalvmNativeImageTask.name)
+
+project(":cli") {
+    configure<ExtraPropertiesExtension> {
+        task<Exec>("cliGraalvmNativeImage") {
+            dependsOn(":cli:build")
+            workingDir = File("${project.projectDir}/output/jvm")
+            commandLine = listOf("native-image", "--no-fallback", "-jar", "cli-jvm-$projectVersion.jar")
+        }
     }
 }
