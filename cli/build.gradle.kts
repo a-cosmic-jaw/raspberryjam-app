@@ -10,6 +10,7 @@ val kotlinVersion: String by properties
 val ktorVersion: String by properties
 val javaVersion = Integer.parseInt(findProperty("javaVersion") as String)
 val projectVersion: String by properties
+val kotlinxCliVersion: String by properties
 
 kotlin {
     jvm() {
@@ -33,7 +34,7 @@ kotlin {
 
     sourceSets {
         getByName("commonMain").dependencies {
-            //implementation("org.jetbrains.kotlinx:kotlinx-cli")
+            implementation("org.jetbrains.kotlinx:kotlinx-cli:$kotlinxCliVersion")
             implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
             implementation("io.ktor:ktor-client-core:$ktorVersion")
             implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
@@ -42,7 +43,8 @@ kotlin {
         }
 
         getByName("jvmMain").dependencies {
-            //implementation("org.jetbrains.kotlinx:kotlinx-cli")
+            implementation(project(":shared"))
+            runtimeOnly("org.jetbrains.kotlinx:kotlinx-cli-jvm:$kotlinxCliVersion")
             implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
             implementation("io.ktor:ktor-client-core:$ktorVersion")
             implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
@@ -51,7 +53,8 @@ kotlin {
         }
 
         getByName("macosArm64Main").dependencies {
-            //implementation("org.jetbrains.kotlinx:kotlinx-cli-macosarm64")
+            //implementation(project(":shared"))
+            runtimeOnly("org.jetbrains.kotlinx:kotlinx-cli-macosarm64:$kotlinxCliVersion")
             implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
             implementation("io.ktor:ktor-client-core:$ktorVersion")
             implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
