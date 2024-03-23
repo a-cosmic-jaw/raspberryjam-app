@@ -2,7 +2,7 @@ plugins {
     id("org.jetbrains.kotlin.multiplatform")
     //id("org.jetbrains.kotlin.plugin.allopen") version "1.9.23"
     //id("com.google.devtools.ksp") version "1.9.23-1.0.19"
-    id("com.github.johnrengelman.shadow")
+    //id("com.github.johnrengelman.shadow")
 
     //`java-library`
 }
