@@ -1,0 +1,6 @@
+micronaut:
+  application:
+    name: worker
+otel:
+  traces:
+    exporter: google_cloud_trace

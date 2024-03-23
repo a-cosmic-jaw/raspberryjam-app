@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: eu.symmetrysought.raspberryjam
+testFramework: kotest
+sourceLanguage: kotlin
+buildTool: gradle_kotlin
+features: [app-name, graalvm, gradle, http-client, kotest, kotlin, kotlin-application, ksp, logback, micronaut-aot, micronaut-build, micronaut-http-validation, netty-server, readme, serialization-jackson, shade, static-resources, tracing-opentelemetry-annotations, tracing-opentelemetry-exporter-gcp, tracing-opentelemetry-gcp, tracing-opentelemetry-http, yaml, yaml-build]
