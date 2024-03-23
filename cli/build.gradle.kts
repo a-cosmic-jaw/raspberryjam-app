@@ -56,7 +56,7 @@ kotlin {
             //implementation(project(":shared"))
             runtimeOnly("org.jetbrains.kotlinx:kotlinx-cli-macosarm64:$kotlinxCliVersion")
             implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-            implementation("io.ktor:ktor-client-core:$ktorVersion")
+            implementation("io.ktor:ktor-client-core")
             implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
             implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
             implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion")
