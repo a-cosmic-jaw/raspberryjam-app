@@ -11,7 +11,6 @@ pluginManagement {
         id("org.jetbrains.kotlin.jvm") version kotlinVersion
         id("org.jetbrains.kotlin.plugin.serialization") version kotlinVersion
         //id("com.github.johnrengelman.shadow") version shadowVersion
-        //id("application") //TODO version
     }
 
     repositories {

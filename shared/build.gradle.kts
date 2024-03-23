@@ -7,14 +7,18 @@ plugins {
     //`java-library`
 }
 
-val kotlinVersion: String by project.properties
-val kotlinCoroutinesVersion: String by project
-val javaVersion: String by project
-val ivyVersion: String by project
-val junitVersion: String by project
+val kotlinVersion: String by properties
+val kotlinCoroutinesVersion: String by properties
+val javaVersion = Integer.parseInt(findProperty("javaVersion") as String)
+val ivyVersion: String by properties
+val junitVersion: String by properties
 
 kotlin {
-    jvm()
+    jvm() {
+        withJava()
+    }
+
+    jvmToolchain(javaVersion)
 
     sourceSets {
         val commonMain by getting
@@ -47,4 +51,5 @@ kotlin {
 
 java {
     sourceCompatibility = JavaVersion.toVersion(javaVersion)
+    targetCompatibility = JavaVersion.toVersion(javaVersion)
 }

@@ -5,17 +5,22 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization")
 }
 
-val kotlinCoroutinesVersion: String by project
-val kotlinVersion: String by project
-val ktorVersion: String by project
-val javaVersion: String by project
-
-findProperty("javaVersion")
+val kotlinCoroutinesVersion: String by properties
+val kotlinVersion: String by properties
+val ktorVersion: String by properties
+val javaVersion = Integer.parseInt(findProperty("javaVersion") as String)
 
 kotlin {
     jvm() {
         withJava()
     }
+
+//    targets.all {
+//        compilations.all {
+//            output.
+//        }
+//    }
+    jvmToolchain(javaVersion)
 
     macosArm64 {
         binaries {
@@ -79,6 +84,7 @@ tasks.withType<Jar> {
 
 java {
     sourceCompatibility = JavaVersion.toVersion(javaVersion)
+    targetCompatibility = JavaVersion.toVersion(javaVersion)
 }
 
 //tasks.named("test") {
@@ -86,3 +92,5 @@ java {
 //    useJUnitPlatform()
 //}
 
+// https://kotlinlang.org/docs/gradle-compiler-options.html#attributes-specific-to-js
+// tasks.withType()
