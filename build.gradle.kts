@@ -11,7 +11,7 @@
 plugins {
     id("org.jetbrains.kotlin.multiplatform") apply false
     id("org.jetbrains.kotlin.jvm") apply false
-    //id("com.github.johnrengelman.shadow") apply false
+    id("com.github.johnrengelman.shadow") apply false
     id("org.jetbrains.kotlin.plugin.serialization") apply false
 }
 

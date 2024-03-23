@@ -10,7 +10,7 @@ pluginManagement {
         id("org.jetbrains.kotlin.multiplatform") version kotlinVersion
         id("org.jetbrains.kotlin.jvm") version kotlinVersion
         id("org.jetbrains.kotlin.plugin.serialization") version kotlinVersion
-        //id("com.github.johnrengelman.shadow") version shadowVersion
+        id("com.github.johnrengelman.shadow") version shadowVersion
     }
 
     repositories {

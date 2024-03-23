@@ -25,7 +25,7 @@ kotlin {
     macosArm64 {
         binaries {
             executable {
-                outputDirectory = File("${project.projectDir}/output")
+                outputDirectory = File("${project.projectDir}/output/macos")
             }
         }
     }
@@ -72,7 +72,7 @@ tasks.withType<Jar> {
 
     // To avoid the duplicate handling strategy error
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-
+    destinationDirectory.set(File("${project.projectDir}/output/jvm"))
     // To add all of the dependencies
     //from(sourceSets.main.get().output)
 
@@ -94,3 +94,9 @@ java {
 
 // https://kotlinlang.org/docs/gradle-compiler-options.html#attributes-specific-to-js
 // tasks.withType()
+
+tasks.filter { it.name == "clean" }.map {
+    it.doFirst {
+        delete("${project.projectDir}/output")
+    }
+}
