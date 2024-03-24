@@ -43,6 +43,7 @@ actual class MonitorDirectory actual constructor(private val directory: String) 
         runBlocking {
             launch {
                 println("debug")
+                println("size=${watcher!!.watchingDirectories.size}")
                 watcher!!.onEventFlow.collect { event: KfsDirectoryWatcherEvent ->
                     println("Event received: $event")
                 }
