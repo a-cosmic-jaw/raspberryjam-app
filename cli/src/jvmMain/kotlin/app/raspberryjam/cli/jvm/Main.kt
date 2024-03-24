@@ -14,7 +14,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 fun getAction(subcommand: String, monitor: JvmMonitor, project: Project, environment: Environment) = when (subcommand) {
     Glob.settings.MONITOR_COMMAND_NAME -> {
-        NoOp(subcommand)
+        MonitorDirectory(monitor.directory)
     }
     else -> {
         NoOp(subcommand)
@@ -29,9 +29,9 @@ fun main(args: Array<String>) = runBlocking {
     raspberryjam.main(args)
 
     getAction(args[0], monitor, project, environment).also { action ->
-        val md = action as MonitorDirectory
-        md.doBefore(null)
-        md.run()
+
+        action.doBefore(null)
+        action.run()
         //action.doAfter(null)
     }
 
