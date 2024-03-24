@@ -1,9 +1,11 @@
 package app.raspberryjam.cli.command
 
+import app.raspberryjam.cli.action.MonitorDirectory
 import app.raspberryjam.cli.common.Glob
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.arguments.argument
 import com.github.ajalt.clikt.parameters.arguments.convert
+import kotlinx.coroutines.runBlocking
 import okio.Path
 import okio.Path.Companion.toPath
 
@@ -14,11 +16,11 @@ open class Monitor: CliktCommand(
         it.toPath()
     }
 
-    init {
-    }
-
     override fun run() {
-
-        println("directory=$directory")
+        runBlocking {
+            val md = MonitorDirectory(directory.name)
+            md.doBefore(null)
+            md.run()
+        }
     }
 }

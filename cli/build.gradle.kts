@@ -12,6 +12,7 @@ val javaVersion = Integer.parseInt(findProperty("javaVersion") as String)
 val projectVersion: String by properties
 val cliktVersion: String by properties
 val okioVersion: String by properties
+val ksfWatchVersion: String by properties
 
 kotlin {
     jvm() {
@@ -30,6 +31,7 @@ kotlin {
 
     sourceSets {
         getByName("commonMain").dependencies {
+            implementation("io.github.irgaly.kfswatch:kfswatch:$ksfWatchVersion")
             implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
             implementation("com.squareup.okio:okio:$okioVersion")
             implementation("com.github.ajalt.clikt:clikt:$cliktVersion")
@@ -47,7 +49,6 @@ kotlin {
             implementation("io.ktor:ktor-client-core:$ktorVersion")
             implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
             implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
-            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion")
         }
 
         getByName("macosArm64Main").dependencies {
