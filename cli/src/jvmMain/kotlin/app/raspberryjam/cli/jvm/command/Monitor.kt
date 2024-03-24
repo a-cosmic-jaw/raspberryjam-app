@@ -9,8 +9,11 @@ import okio.Path.Companion.toPath
 import kotlin.io.path.absolutePathString
 
 class JvmMonitor() : Monitor() {
-    override val directory: Path by argument().path().convert {
-        it.absolutePathString().toPath()
+    override val directory: String by argument().path(
+            mustExist = true,
+            mustBeReadable = true,
+            mustBeWritable = true).convert {
+        it.absolutePathString()
     }
 }
 
