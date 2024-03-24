@@ -18,6 +18,7 @@ class Main(t: Terminal): CliktCommand(name = Glob.strings.RASPBERRYJAM_EXECUTABL
 
         context {
             terminal = t
+            autoEnvvarPrefix = "RASPBERRYJAM_CLI"
         }
     }
 
