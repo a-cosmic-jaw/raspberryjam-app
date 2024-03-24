@@ -8,5 +8,5 @@ import com.github.ajalt.clikt.core.subcommands
 import com.github.ajalt.mordant.terminal.Terminal
 
 fun main(args: Array<String>) =
-    Main(Terminal()).subcommands(JvmMonitor(), Project(), Environment()).main(args)
+    Main(Terminal(hyperlinks = true)).subcommands(JvmMonitor(), Project(), Environment()).main(args)
 
