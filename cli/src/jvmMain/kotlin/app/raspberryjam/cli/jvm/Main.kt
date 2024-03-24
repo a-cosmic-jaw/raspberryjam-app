@@ -5,7 +5,8 @@ import app.raspberryjam.cli.command.JvmMonitor
 import app.raspberryjam.cli.command.Main
 import app.raspberryjam.cli.command.Project
 import com.github.ajalt.clikt.core.subcommands
+import com.github.ajalt.mordant.terminal.Terminal
 
 fun main(args: Array<String>) =
-    Main().subcommands(JvmMonitor(), Project(), Environment()).main(args)
+    Main(Terminal()).subcommands(JvmMonitor(), Project(), Environment()).main(args)
 
