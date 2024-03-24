@@ -4,10 +4,10 @@ import kotlin.native.concurrent.ThreadLocal
 
 @ThreadLocal
 object Glob {
-    data class Strings(
+    data class Settings(
         val RASPBERRYJAM: String = "RaspberryJam",
         val RASPBERRYJAM_BASE_ADDRESS: String = "raspberryjam.app",
-        val RASPBERRYJAM_TAGLINE: String = "We be jammin'!",
+        val RASPBERRYJAM_TAGLINE: String = "Join the jammin'!",
         val RASPBERRYJAM_HELP: String = "A CLI tool for the $RASPBERRYJAM project over at https://$RASPBERRYJAM_BASE_ADDRESS - $RASPBERRYJAM_TAGLINE",
         val RASPBERRYJAM_EXECUTABLE_NAME: String = "raspberryjam",
         val MONITOR_HELP_DIRECTORY: String = "The directory containing a $RASPBERRYJAM project to monitor while developing.",
@@ -24,11 +24,12 @@ object Glob {
         val PROJECT_WORKER_ADDRESS_HELP: String = "The network address of the worker."
     )
 
-    val strings = Strings()
+    val settings = Settings()
 
     enum class envvars(val help: String) {
         RASPBERRYJAM_DEFAULT_PROJECT("The default project at this computer."),
         RASPBERRYJAM_WORKER_ADDRESS("The address of your worker (ex. 'localhost' or '<version>.raspberryjam-worker.local'"),
-        RASPBERRYJAM_WORKER_PORT("The network port of your worker.")
+        RASPBERRYJAM_WORKER_PORT("The network port of your worker."),
+        RASPBERRYJAM_CLI_AUTOCOMPLETE("Set to 'zsh', 'bash' or 'fish' to make auto complete generation more auto. See https://ajalt.github.io/clikt/autocomplete/#with-an-environment-variable for more.")
     }
 }
