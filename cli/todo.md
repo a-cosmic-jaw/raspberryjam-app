@@ -4,3 +4,4 @@
 * Create random md5?
 * Call raspberryjam.app API
 * Call raspberryjam.local API
+* autocomplete: https://ajalt.github.io/clikt/autocomplete/

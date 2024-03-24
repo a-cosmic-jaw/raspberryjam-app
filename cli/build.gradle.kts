@@ -10,18 +10,14 @@ val kotlinVersion: String by properties
 val ktorVersion: String by properties
 val javaVersion = Integer.parseInt(findProperty("javaVersion") as String)
 val projectVersion: String by properties
-val kotlinxCliVersion: String by properties
+val cliktVersion: String by properties
+val okioVersion: String by properties
 
 kotlin {
     jvm() {
         withJava()
     }
 
-//    targets.all {
-//        compilations.all {
-//            output.
-//        }
-//    }
     jvmToolchain(javaVersion)
 
     macosArm64 {
@@ -34,7 +30,9 @@ kotlin {
 
     sourceSets {
         getByName("commonMain").dependencies {
-            implementation("org.jetbrains.kotlinx:kotlinx-cli:$kotlinxCliVersion")
+            implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
+            implementation("com.squareup.okio:okio:$okioVersion")
+            implementation("com.github.ajalt.clikt:clikt:$cliktVersion")
             implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
             implementation("io.ktor:ktor-client-core:$ktorVersion")
             implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
@@ -44,7 +42,7 @@ kotlin {
 
         getByName("jvmMain").dependencies {
             implementation(project(":shared"))
-            runtimeOnly("org.jetbrains.kotlinx:kotlinx-cli-jvm:$kotlinxCliVersion")
+            runtimeOnly("com.github.ajalt.clikt:clikt-jvm:$cliktVersion")
             implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
             implementation("io.ktor:ktor-client-core:$ktorVersion")
             implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
@@ -54,7 +52,7 @@ kotlin {
 
         getByName("macosArm64Main").dependencies {
             //implementation(project(":shared"))
-            runtimeOnly("org.jetbrains.kotlinx:kotlinx-cli-macosarm64:$kotlinxCliVersion")
+            runtimeOnly("com.github.ajalt.clikt:clikt:$cliktVersion")
             implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
             implementation("io.ktor:ktor-client-core")
             implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
@@ -65,7 +63,7 @@ kotlin {
 }
 
 application {
-    mainClass.set("app.raspberryjam.cli.JvmMainKt")
+    mainClass.set("app.raspberryjam.cli.jvm.MainKt")
 }
 
 tasks.withType<Jar> {
