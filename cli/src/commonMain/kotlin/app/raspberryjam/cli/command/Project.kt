@@ -11,13 +11,10 @@ class Project: CliktCommand(
         help = Glob.settings.PROJECT_HELP) {
     val id by option(envvar = Glob.envvars.RASPBERRYJAM_DEFAULT_PROJECT.name, help = Glob.settings.PROJECT_HELP_ID).default("default_id (loaded from ~/.raspberryjam/)")
     val new: Boolean by option("-n", "--new", help = Glob.settings.PROJECT_HELP_NEW).flag()
-    val workerAddress by option("-w", "--worker-address", help = Glob.settings.PROJECT_WORKER_ADDRESS_HELP, envvar = Glob.envvars.RASPBERRYJAM_WORKER_ADDRESS.name).default("localhost:8080")
-
-    init {
-    }
+    val workerAddress by option("-a", "--worker-address", help = Glob.settings.PROJECT_WORKER_ADDRESS_HELP, envvar = Glob.envvars.RASPBERRYJAM_WORKER_ADDRESS.name).default("localhost")
+    val workerPort by option("-p", "--worker-port", help = Glob.settings.PROJECT_WORKER_PORT_HELP, envvar = Glob.envvars.RASPBERRYJAM_WORKER_PORT.name).default("8080")
 
     override fun run() {
-        println("id=$id")
-        println("new=$new")
+
     }
 }

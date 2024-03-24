@@ -49,6 +49,9 @@ kotlin {
             implementation("io.ktor:ktor-client-core:$ktorVersion")
             implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
             implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion")
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:$kotlinCoroutinesVersion")
+            implementation("io.github.irgaly.kfswatch:kfswatch-jvm:$ksfWatchVersion")
         }
 
         getByName("macosArm64Main").dependencies {
@@ -58,7 +61,7 @@ kotlin {
             implementation("io.ktor:ktor-client-core")
             implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
             implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
-            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion")
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-macosarm64:$kotlinCoroutinesVersion")
         }
     }
 }

@@ -21,7 +21,8 @@ object Glob {
         val ENVIRONMENT_COMMAND_NAME: String = "environment",
         val ENVIRONMENT_HELP: String = "Checks your environment setup.",
         val ENVIRONEMNT_ENVVARS_HELP: String = "Prints the names of the projects environment variables and their usage.",
-        val PROJECT_WORKER_ADDRESS_HELP: String = "The network address of the worker."
+        val PROJECT_WORKER_ADDRESS_HELP: String = "The network address of the worker.",
+        val PROJECT_WORKER_PORT_HELP: String = "The network port the worker is running on."
     )
 
     val settings = Settings()

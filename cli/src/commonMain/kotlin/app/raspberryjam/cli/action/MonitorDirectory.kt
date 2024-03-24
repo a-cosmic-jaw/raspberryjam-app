@@ -9,34 +9,10 @@ import kotlinx.coroutines.runBlocking
 import kotlin.coroutines.coroutineContext
 
 
-class MonitorDirectory(val directory: String): Base(
-        name = "monitor-directory") {
-    private lateinit var watcher: KfsDirectoryWatcher
+expect class MonitorDirectory(directory: String): Base {
+    override fun doBefore(message: String?)
 
-    override suspend fun run() {
-        val scope = CoroutineScope(coroutineContext)
-        watcher = KfsDirectoryWatcher(scope)
+    override fun run()
 
-        // Add watching directories, and start watching
-        watcher.add(directory)
-
-        // Observe events from Flow
-        scope.launch {
-            println("debug")
-            watcher.onEventFlow.collect { event: KfsDirectoryWatcherEvent ->
-                println("Event received: $event")
-            }
-        }
-    }
-
-    override suspend fun doAfter(message: String?) {
-        super.doAfter(message)
-
-        // Stop watching
-        watcher.removeAll()
-
-        // Release all system's resources
-        watcher.close() // or scope.cancel() will trigger watcher.close() automatically
-    }
-
+    override fun doAfter(message: String?)
 }

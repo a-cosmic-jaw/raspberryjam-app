@@ -14,10 +14,6 @@ class Environment: CliktCommand(
     }
 
     override fun run() {
-        if (printEnvVars) {
-            Glob.envvars.entries.forEach {
-                println("${it.name} - ${it.help}")
-            }
-        }
+
     }
 }
